@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from './layout/Layout';
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
     return (
@@ -15,6 +16,9 @@ function App() {
                 </Route>
 
                 <Route path="/login" element={<LoginPage></LoginPage>}>
+                </Route>
+
+                <Route path="/register" element={<RegisterPage></RegisterPage>}>
                 </Route>
             </Route>
         </Routes> 
