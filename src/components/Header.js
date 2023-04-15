@@ -6,22 +6,41 @@ const Header = () => {
     const { setUserInfo, userInfo } = useContext(UserContext)
 
     useEffect(() => {
-        fetch("http://localhost:3001/profile", {
-            credentials: "include"
-        }).then(response => {
-            response.json().then(userInfo => {
-                setUserInfo(userInfo)
-            })
-        })
+        const fetchData = async () => {
+            try {
+                const response = await fetch("http://localhost:3001/profile", {
+                    method: "GET",
+                    headers: {'Content-Type': "application/json"},
+                    credentials: "include"
+                })
+
+                // if(!response.ok) {
+                //     throw new Error("Network response was not ok")
+                // }
+                
+                if (response.ok) {
+                    const userInfo = await response.json()
+                    setUserInfo(userInfo)
+                }
+            } catch (error) {
+                console.error("Error fetching user profile:", error);
+            }
+        }
+        fetchData()
     }, [])
 
-    const handleLogout = () => {
-        fetch("http://localhost:3001/logout", {
-            credentials: "include",
-            method: "POST"
-        })
+    const handleLogout = async () => {
+        try {
+            await fetch("http://localhost:3001/logout", {
+                method: "POST",
+                headers: {'Content-Type': "application/json"},
+                credentials: "include",
+            })
 
-        setUserInfo(null)
+            setUserInfo(null);
+        } catch (error) {
+            console.error("Error logging out:", error);
+        }
     }
 
     const username = userInfo?.username
