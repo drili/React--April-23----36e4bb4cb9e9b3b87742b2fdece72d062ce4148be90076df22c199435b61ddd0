@@ -5,23 +5,26 @@ import Layout from './layout/Layout';
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import UserContextProvider from './UserContext';
 
 function App() {
     return (
-        <Routes>
-            <Route path="/" element={<Layout></Layout>}>
-                <Route index element={
-                    <IndexPage></IndexPage>
-                }>
-                </Route>
+        <UserContextProvider>
+            <Routes>
+                <Route path="/" element={<Layout></Layout>}>
+                    <Route index element={
+                        <IndexPage></IndexPage>
+                    }>
+                    </Route>
 
-                <Route path="/login" element={<LoginPage></LoginPage>}>
-                </Route>
+                    <Route path="/login" element={<LoginPage></LoginPage>}>
+                    </Route>
 
-                <Route path="/register" element={<RegisterPage></RegisterPage>}>
+                    <Route path="/register" element={<RegisterPage></RegisterPage>}>
+                    </Route>
                 </Route>
-            </Route>
-        </Routes> 
+            </Routes> 
+        </UserContextProvider>
     );
 }
 
