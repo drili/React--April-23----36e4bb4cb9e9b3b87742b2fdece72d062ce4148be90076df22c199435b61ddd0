@@ -24,7 +24,8 @@ const CreatePost = () => {
 
         const response = await fetch("http://localhost:3001/post", {
             method: "POST",
-            body: data
+            body: data,
+            credentials: "include"
         })
 
         if (response.ok) {
