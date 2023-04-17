@@ -50,6 +50,12 @@ div.post {
 div.post div.texts h2 {
     margin: 0;
     font-size: 1.6rem;
+    text-decoration: none;
+}
+
+div.post a {
+    text-decoration: none;
+    color: inherit;
 }
 
 div.post p.info {
@@ -101,4 +107,36 @@ form.login h1,
 form.register h1 {
     text-align: center;
     margin-bottom: 40px;
+}
+
+div.post-page .image {
+    display: block;
+    max-height: 500px;
+    overflow: hidden;
+    height: 500px;
+}
+
+div.post-page .image img {
+    object-fit: contain;
+    object-position: center center;
+}
+
+div.post-page a {
+    text-decoration: underline;
+    color: #333;
+}
+
+div.post-page h1 {
+    font-weight: bold;
+}
+
+div.post-page .post-info {
+    display: flex;
+    gap: 0.5rem;
+    padding: 20px 0;
+    align-items: center;
+}
+
+div.post-page .post-info * {
+    color: #888;
 }
