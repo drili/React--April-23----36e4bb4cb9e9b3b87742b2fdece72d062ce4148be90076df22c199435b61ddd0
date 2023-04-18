@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { formatISO9075 } from "date-fns"
+import { UserContext } from '../UserContext'
 
 const PostPage = () => {
     const { id } = useParams()
     const [postInfo, setPostInfo] = useState(null)
+    const { userInfo } = useContext(UserContext)
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -29,6 +31,11 @@ const PostPage = () => {
     return (
         <div className='post-page'>
             <h1>{postInfo.title}</h1>
+            {userInfo.id === postInfo.author._id && (
+                <div className='edit-row'>
+                    <Link className='edit-btn' to={`/edit/${postInfo._id}`}>Edit Post</Link>
+                </div>
+            )}
 
             <div className="image">
                 <img src={`http://localhost:3001/${postInfo.cover}`}></img>

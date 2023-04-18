@@ -140,3 +140,8 @@ div.post-page .post-info {
 div.post-page .post-info * {
     color: #888;
 }
+
+div.edit-row {
+    text-align: left;
+    margin-bottom: 20px;
+}
